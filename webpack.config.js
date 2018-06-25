@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
-    library: 'vue-lupus-paragraph-pinterest',
+    library: 'vue-lupus-paragraph-instagram',
     libraryTarget: 'umd',
     umdNamedDefine: true,
   },
