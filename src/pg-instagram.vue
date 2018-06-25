@@ -11,6 +11,7 @@
   </div>
 </template>
 <script>
+  import axios from 'axios';
   export default {
     name: 'PgInstagram',
     props: {
@@ -21,14 +22,11 @@
         embedHtml: '',
       }
     },
-    mounted() {
-      this.getEmbedHtml();
-    },
-    methods: {
-      getEmbedHtml() {
-        this.$http.get('https://api.instagram.com/oembed/?url=' + this.dataInstagramUrl).then(response => {
-          this.embedHtml = JSON.parse(response.body).html;
-        })
+    created() {
+      if (this.dataInstagramUrl !== '') {
+        axios.get('https://api.instagram.com/oembed/?url=' + this.dataInstagramUrl).then(response => {
+          this.embedHtml = response.html;
+        });
       }
     },
   };
