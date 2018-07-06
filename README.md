@@ -1,4 +1,4 @@
-# vue-lupus-paragrpah-instagram
+# vue-lupus-paragraph-instagram
 Vue instagram paragraph component.
 
 
