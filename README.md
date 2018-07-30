@@ -17,14 +17,16 @@ import { PgInstagram } from 'vue-lupus-paragraph-instagram';
 Vue.component('pg-instagram', PgInstagram);
 ```
 
-## Options
-You can pass options via props:
+## Properties
+You can pass the following props:
 
+- `data-instagram-url` ( string )
+  The pin's url.
+
+## Example
 ```
 <pg-instagram
   type="{{ type }}"
   data-instagram-url="/instagram/url"
 >
 ```
-- `data-instagram-url` ( string )
-  The pin's url.
