@@ -26,7 +26,6 @@ You can pass the following props:
 ## Example
 ```
 <pg-instagram
-  type="{{ type }}"
   data-instagram-url="/instagram/url"
 >
 ```
