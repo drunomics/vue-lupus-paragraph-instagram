@@ -1,12 +1,9 @@
 <template>
   <div class="paragraph paragraph--instagram">
-    <div class="paragraph__field-media">
-      <slot
-        name="field_media"
-        v-html="embedHtml"
-      >
-      </slot>
-      <slot />
+    <div 
+      class="paragraph__field-media"
+      v-html="embedHtml"
+    >
     </div>
   </div>
 </template>
@@ -22,10 +19,10 @@
         embedHtml: '',
       }
     },
-    created() {
+    mounted() {
       if (this.dataInstagramUrl !== '') {
         axios.get('https://api.instagram.com/oembed/?url=' + this.dataInstagramUrl).then(response => {
-          this.embedHtml = response.html;
+          this.embedHtml = response.data.html;
         });
       }
     },

@@ -21,7 +21,7 @@ Vue.component('pg-instagram', PgInstagram);
 You can pass the following props:
 
 - `data-instagram-url` ( string )
-  The pin's url.
+  The instagram image url.
 
 ## Example
 ```
