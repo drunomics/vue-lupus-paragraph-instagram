@@ -12,7 +12,7 @@
   export default {
     name: 'PgInstagram',
     props: {
-      dataInstagramUrl: { type: String, default: () => '' },
+      dataUrl: { type: String, default: () => '' },
     },
     data() {
       return {
@@ -20,8 +20,8 @@
       }
     },
     mounted() {
-      if (this.dataInstagramUrl !== '') {
-        axios.get('https://api.instagram.com/oembed/?url=' + this.dataInstagramUrl).then(response => {
+      if (this.dataUrl !== '') {
+        axios.get('https://api.instagram.com/oembed/?url=' + this.dataUrl).then(response => {
           this.embedHtml = response.data.html;
           // The response HTML from instagram contains this script tag already,
           // but via v-html it does not get executed so we need to add this element here manually.

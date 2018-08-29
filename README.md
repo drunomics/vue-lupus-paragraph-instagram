@@ -20,12 +20,12 @@ Vue.component('pg-instagram', PgInstagram);
 ## Properties
 You can pass the following props:
 
-- `data-instagram-url` ( string )
+- `data-url` ( string )
   The instagram image url.
 
 ## Example
 ```
 <pg-instagram
-  data-instagram-url="/instagram/url"
+  data-url="/instagram/url"
 >
 ```
