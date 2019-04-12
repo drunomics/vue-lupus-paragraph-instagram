@@ -20,7 +20,7 @@ export default {
     }
   },
   mounted () {
-    if (this.dataUrl !== '') {
+    if (this.src !== '') {
       axios.get('https://api.instagram.com/oembed/?url=' + this.src).then(response => {
         this.embedHtml = response.data.html
         // The response HTML from instagram contains this script tag already,
@@ -28,6 +28,7 @@ export default {
         const script = document.createElement('script')
         script.src = '//www.instagram.com/embed.js'
         script.async = true
+        script.defer = true
         document.head.appendChild(script)
       })
     }
