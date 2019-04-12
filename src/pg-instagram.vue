@@ -1,6 +1,6 @@
 <template>
   <div class="paragraph paragraph--instagram">
-    <slot name="title" />
+    <slot :name="$slots.title ? 'title': 'default'" />
     <div
       class="instagram-post"
       v-html="embedHtml"
