@@ -2007,23 +2007,25 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
   props: {
     src: {
       type: String,
-      default: () => ''
+      default: function _default() {
+        return '';
+      }
     }
   },
-
-  data() {
+  data: function data() {
     return {
       embedHtml: ''
     };
   },
+  mounted: function mounted() {
+    var _this = this;
 
-  mounted() {
     if (this.src !== '') {
-      axios_default.a.get('https://api.instagram.com/oembed/?url=' + this.src).then(response => {
-        this.embedHtml = response.data.html; // The response HTML from instagram contains this script tag already,
+      axios_default.a.get('https://api.instagram.com/oembed/?url=' + this.src).then(function (response) {
+        _this.embedHtml = response.data.html; // The response HTML from instagram contains this script tag already,
         // but via v-html it does not get executed so we need to add this element here manually.
 
-        const script = document.createElement('script');
+        var script = document.createElement('script');
         script.src = '//www.instagram.com/embed.js';
         script.async = true;
         script.defer = true;
@@ -2031,7 +2033,6 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
       });
     }
   }
-
 });
 // CONCATENATED MODULE: ./src/pg-instagram.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_pg_instagramvue_type_script_lang_js_ = (pg_instagramvue_type_script_lang_js_); 
