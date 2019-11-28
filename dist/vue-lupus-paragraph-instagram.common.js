@@ -1899,12 +1899,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"553e40dc-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/pg-instagram.vue?vue&type=template&id=7c861d4c&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"paragraph paragraph--instagram"},[_vm._t(_vm.$slots.title ? 'title': 'default'),_c('div',{staticClass:"instagram-post",domProps:{"innerHTML":_vm._s(_vm.embedHtml)}})],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"553e40dc-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/pg-instagram.vue?vue&type=template&id=19a0af8a&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"paragraph paragraph--instagram"},[_vm._t(_vm.$slots.title ? 'title': 'default'),_c('div',{ref:"igPost",staticClass:"instagram-post"})],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/pg-instagram.vue?vue&type=template&id=7c861d4c&
+// CONCATENATED MODULE: ./src/pg-instagram.vue?vue&type=template&id=19a0af8a&
 
 // EXTERNAL MODULE: ./node_modules/axios/index.js
 var axios = __webpack_require__("bc3a");
@@ -1926,30 +1926,35 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
   props: {
     src: {
       type: String,
-      default: function _default() {
-        return '';
-      }
+      required: true
     }
-  },
-  data: function data() {
-    return {
-      embedHtml: ''
-    };
   },
   mounted: function mounted() {
     var _this = this;
 
-    if (this.src !== '') {
-      axios_default.a.get('https://api.instagram.com/oembed/?url=' + this.src).then(function (response) {
-        _this.embedHtml = response.data.html; // The response HTML from instagram contains this script tag already,
-        // but via v-html it does not get executed so we need to add this element here manually.
+    axios_default.a.get('https://api.instagram.com/oembed/?url=' + this.src).then(function (response) {
+      // Remove the script from the markup.
+      var postMarkup = response.data.html.split('<script').shift();
 
-        var script = document.createElement('script');
-        script.src = '//www.instagram.com/embed.js';
-        script.async = true;
-        script.defer = true;
-        document.head.appendChild(script);
-      });
+      _this.init(postMarkup);
+    });
+  },
+  methods: {
+    init: function init(postMarkup) {
+      this.$refs.igPost.innerHTML = postMarkup;
+      this.process();
+    },
+    process: function process() {
+      if (!window.instgrm) {
+        // Load the apy, processing happens on load
+        var apiScript = document.createElement('script');
+        apiScript.async = 1;
+        apiScript.src = 'https://www.instagram.com/embed.js';
+        document.getElementsByTagName('head')[0].appendChild(apiScript);
+      } else {
+        // api already loaded just process the new post.
+        window.instgrm.Embeds.process();
+      }
     }
   }
 });
