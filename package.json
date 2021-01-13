@@ -1,6 +1,6 @@
 {
   "name": "@drunomics/vue-lupus-paragraph-instagram",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Vue paragraph instagram",
   "main": "dist/vue-lupus-paragraph-instagram.umd.min.js",
   "scripts": {
