@@ -1,6 +1,6 @@
 {
   "name": "@drunomics/vue-lupus-paragraph-instagram",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Vue paragraph instagram",
   "main": "dist/vue-lupus-paragraph-instagram.umd.min.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "author": "Drunomics GmbH",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "vue": "^2.6.6"
   },
   "devDependencies": {
@@ -27,7 +27,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.14.1",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21"
   },
